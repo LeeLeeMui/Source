@@ -1,0 +1,151 @@
+const a = 3;
+function fun(a) {
+ const b = 20;
+ return a + b + c; // return fun(8+20+10) nearest b is 20
+}
+const b = 5;
+const c = 10;
+//fun(a +b) // returns fun(3+5) 
+
+
+
+const x = 3;
+function fu(x) {
+ if (x % 2 === 0) {
+ const z = 20; 
+ } else {
+ const z = 30;
+ }
+ return x + y + z; //returns 8 + 5 + 20  since 8%2===0
+}
+const y = 5;
+const z = 10;
+//fu(x + y); // returns fu(8)
+
+
+//iterative function 
+function fib(n,x,y) {
+    return n === 1 ? y 
+                   : n === 2
+                   ? x
+                   :fib(n-1,x+y,x);
+}
+
+
+
+
+
+
+
+
+//Higher Order functions can take in functions as arguements
+
+function higher(f,g,n,x) {
+    return n === 0 ? x
+    : n%2 === 0 
+    ? higher(f,g,n-1,f(x))
+    : higher(f,g,n-1,g(x));
+}
+
+
+higher(x=>x+1,x=>2*x,6,1);
+
+
+
+
+
+
+
+//Recursion on trees
+
+function filter_tree(f,tree) {
+    if (is_null(tree)) { return null;}
+    else if (is_list(head(tree))) {
+            return is_null(filter_tree(f,head(tree))) ? filter_tree(f,tail(tree))
+                  :pair(filter_tree(f,head(tree)),filter_tree(f,tail(tree))) ;}
+                  
+        else { return f(head(tree)) ? pair(head(tree),filter_tree(f,tail(tree)))
+                 : filter_tree(f,tail(tree));
+    }
+}
+
+
+
+
+
+
+function flatten_tree(tree) {
+    function f(x,y) {
+        return is_null(x) ? y 
+         :is_list(x) ? append(flatten_tree(x),y)
+         : pair(x,y);
+    }
+
+   return accumulate(f,null,tree); 
+    
+    
+}
+
+const my_tree = list( list(1,list(3,6),10),list(5));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function g(xs,n) {
+    return n === 0 ? list(null) 
+    : accumulate(append,null,
+       map(x=>map(p=>pair(x,p),g(xs,n-1)),xs));
+}
+
+
+function accu(f,initial,tree) {
+    function g(x,y) { return is_list(x)? f(accu(f,initial,x),y)
+    : f(x,y);}
+    return accumulate(g,initial,tree); }
+    
+    
+    
+    
+    
+    
+function p(x,y) {
+    return pair(x,pair(y,p(x,y)));
+}
+    
+    
+    
+    
+function sum(tree) {
+    return is_null(tree) ? 0
+     : (is_list(head(tree))? sum(head(tree)) : head(tree)) + sum(tail(tree));
+}
+    
+
+ 
+    
+    
+    
+    
+    
+    
+
