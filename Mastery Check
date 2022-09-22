@@ -118,30 +118,7 @@ function g(xs,n) {
 }
 
 
-function accu(f,initial,tree) {
-    function g(x,y) { return is_list(x)? f(accu(f,initial,x),y)
-    : f(x,y);}
-    return accumulate(g,initial,tree); }
-    
-    
-    
-    
-    
-    
-function p(x,y) {
-    return pair(x,pair(y,p(x,y)));
-}
-    
-    
-    
-    
-function sum(tree) {
-    return is_null(tree) ? 0
-     : (is_list(head(tree))? sum(head(tree)) : head(tree)) + sum(tail(tree));
-}
-    
 
- 
     
     
     
